@@ -1,4 +1,6 @@
-## Difficult Mode:
+# https://newline.theironyard.com/paths/84/units/229/assignments/547
+
+## Epic Mode:
 ### Question method
 def questionMethod(prompt,body)
   print prompt
