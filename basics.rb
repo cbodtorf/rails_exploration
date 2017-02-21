@@ -1,4 +1,4 @@
-# https://newline.theironyard.com/paths/84/units/229/assignments/547
+# paths/84/units/229/assignments/547
 
 ## Epic Mode:
 ### Question method
