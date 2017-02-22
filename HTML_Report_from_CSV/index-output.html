@@ -2,19 +2,27 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title><%= WeeklyReport::TITLE %></title>
+    <title>Weekly Report</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>Revenue: $<%= report.getRevenue %></h1>
+    <h1>Revenue: $536895</h1>
     <table class="table table-bordered">
       <thead class="thead-inverse">
         <tr class="">
-          <% report.getHeaders.each do |header| %>
-            <th> <%= header.capitalize %> <td>
-          <% end %>
+          
+            <th> Pilot <td>
+          
+            <th> Destination <td>
+          
+            <th> Shipment <td>
+          
+            <th> Crates <td>
+          
+            <th> Money <td>
+          
         </tr>
       </thead>
 
