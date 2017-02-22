@@ -1,12 +1,18 @@
+# $ ruby data_parser.rb "./planet_express_logs.csv" "./report.erb"
+
 # data parsing
 require 'csv'
 require 'erb'
 
+file_csv, file_template = ARGV
+
 class WeeklyReport
   TITLE = "Weekly Report"
 
-  def initialize(file_location)
+  def initialize(file_location, template)
     @jobs = CSV.read(file_location, headers: true, header_converters: :symbol)
+    @template = File.read(template)
+    @output = "./index-output.html"
   end
 
   def getHeaders
@@ -31,13 +37,15 @@ class WeeklyReport
     return "#{pilot}'s trip count is: #{count}"
   end
 
+  def _render
+    compiled_html = ERB.new(@template).result
+    File.open(@output, "wb") {|file|
+        file.write(compiled_html)
+        file.close()
+    }
+  end
 end
 
-report = WeeklyReport.new "./planet_express_logs.csv"
+report = WeeklyReport.new(file_csv, file_template)
 
-html_string = File.read("./report.erb")
-compiled_html = ERB.new(html_string).result(binding)
-File.open("./index-output.html", "wb") {|file|
-    file.write(compiled_html)
-    file.close()
-}
+report._render
