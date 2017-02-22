@@ -16,11 +16,40 @@
       <thead class="thead-inverse">
         <tr class="">
           <% report.getHeaders.each do |header| %>
-            <th> <%= header.capitalize %> <td>
+            <th> <%= header.capitalize %> </th>
           <% end %>
         </tr>
       </thead>
-
+      <% report.getJobs.each do |shipment| %>
+        <tr>
+          <% shipment.each do |item| %>
+          <td><%= item[1] %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+    <h2>Employees:</h2>
+    <table class="table table-bordered">
+      <thead class="thead-inverse">
+        <tr class="">
+          <td></td>
+          <% report.getPilots.each do |pilot| %>
+            <th> <%= pilot %> </th>
+          <% end %>
+        </tr>
+        <tr>
+          <th>Bonus</th>
+          <%  report.getPilots.each do |pilot| %>
+              <td><%= report.getPilotBonus(pilot) %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <th>Trip Count</th>
+          <%  report.getPilots.each do |pilot| %>
+              <td><%= report.getPilotTripCount(pilot) %></td>
+          <% end %>
+        </tr>
+      </thead>
     </table>
   </body>
 </html>

@@ -10,7 +10,7 @@ class WeeklyReport
   TITLE = "Weekly Report"
 
   def initialize(file_location, template)
-    @jobs = CSV.read(file_location, headers: true, header_converters: :symbol)
+    @jobs = CSV.read(file_location, :headers => true, :header_converters => :symbol)
     @template = File.read(template)
     @output = "./index-output.html"
   end
@@ -23,18 +23,22 @@ class WeeklyReport
     return @jobs[:money].map(&:to_i).reduce(:+)
   end
 
+  def getJobs
+    return @jobs
+  end
+
+  def getPilots
+    return @jobs[:pilot].uniq
+  end
+
   def getPilotBonus(pilot)
-    bonus = @jobs.select{|job| job[:pilot] == pilot }
+    return @jobs.select{|job| job[:pilot] == pilot }
               .map{|job| job[:money].to_i}
               .reduce(:+) * 0.1
-
-    return "#{pilot}'s bonus is: #{bonus}"
   end
 
   def getPilotTripCount(pilot)
-    count = @jobs.select{|job| job[:pilot] == pilot }.count
-
-    return "#{pilot}'s trip count is: #{count}"
+    return @jobs.select{|job| job[:pilot] == pilot }.count
   end
 
   def _render
@@ -47,5 +51,4 @@ class WeeklyReport
 end
 
 report = WeeklyReport.new(file_csv, file_template)
-
 report._render
