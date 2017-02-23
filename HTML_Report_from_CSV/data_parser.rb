@@ -37,6 +37,12 @@ class WeeklyReport
               .reduce(:+) * 0.1
   end
 
+  def getPilotEarnings(pilot)
+    return @jobs.select{|job| job[:pilot] == pilot }
+              .map{|job| job[:money].to_i}
+              .reduce(:+)
+  end
+
   def getPilotTripCount(pilot)
     return @jobs.select{|job| job[:pilot] == pilot }.count
   end
