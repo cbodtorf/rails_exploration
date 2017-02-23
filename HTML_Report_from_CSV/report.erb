@@ -28,6 +28,7 @@
         </tr>
       <% end %>
     </table>
+
     <h2>Employees:</h2>
     <table class="table table-bordered">
       <thead class="thead-inverse">
@@ -47,6 +48,24 @@
           <th>Trip Count</th>
           <%  report.getPilots.each do |pilot| %>
               <td><%= report.getPilotTripCount(pilot) %></td>
+          <% end %>
+        </tr>
+      </thead>
+    </table>
+
+    <h2>Earnings by Planet:</h2>
+    <table class="table table-bordered">
+      <thead class="thead-inverse">
+        <tr class="">
+          <td></td>
+          <% report.getPlanets.each do |planet| %>
+            <th> <%= planet %> </th>
+          <% end %>
+        </tr>
+        <tr>
+          <th>Earnings</th>
+          <%  report.getPlanets.each do |planet| %>
+              <td>$<%= report.getPlanetEarnings(planet) %></td>
           <% end %>
         </tr>
       </thead>

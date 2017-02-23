@@ -31,6 +31,16 @@ class WeeklyReport
     return @jobs[:pilot].uniq
   end
 
+  def getPlanets
+    return @jobs[:destination].uniq
+  end
+
+  def getPlanetEarnings(planet)
+    return @jobs.select{|job| job[:destination] == planet }
+              .map{|job| job[:money].to_i}
+              .reduce(:+)
+  end
+
   def getPilotBonus(pilot)
     return @jobs.select{|job| job[:pilot] == pilot }
               .map{|job| job[:money].to_i}
