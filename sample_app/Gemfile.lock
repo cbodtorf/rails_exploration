@@ -112,6 +112,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    pg (0.18.4)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -197,7 +198,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (= 3.1.11)
+  bcrypt (~> 3.1.7)
   bootstrap-sass (= 3.3.6)
   byebug
   coffee-rails (~> 4.2)
@@ -207,6 +208,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   minitest-reporters (= 1.1.9)
+  pg (= 0.18.4)
   puma (~> 3.0)
   rails (~> 5.0.1)
   rails-controller-testing (= 0.1.1)
