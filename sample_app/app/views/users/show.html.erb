@@ -1,6 +1,15 @@
-<div class="">
-  <%= @user.name %>, <%= @user.email %>
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user, 128 %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
 </div>
+
 <div class="">
   <span><strong>Created at: </strong></span>
   <%= @user.created_at %>
